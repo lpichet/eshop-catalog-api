@@ -42,8 +42,8 @@ jobs:
         run: >
           dotnet publish src/Catalog.Api/Catalog.Api.csproj -c Release /t:PublishContainer
           "-p:ContainerRegistry=ghcr.io"
-          "-p:ContainerImageTags=latest;${{ env.VERSION }};sha-${{ github.sha }}"
-          "-p:ContainerRuntimeIdentifiers=linux-x64;linux-arm64"
+          "-p:ContainerImageTags=latest%3B${{ env.VERSION }}%3Bsha-${{ github.sha }}"
+          "-p:ContainerRuntimeIdentifiers=linux-x64%3Blinux-arm64"
 
       - name: Pack EShop.Catalog.Hosting
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
