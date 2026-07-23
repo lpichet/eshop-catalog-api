@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  DOTNET_NOLOGO: true
+  VERSION: 1.0.${{ github.run_number }}
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Integration tests (Aspire + real PostgreSQL container)
+        run: dotnet test --no-build -c Release --logger "console;verbosity=normal"
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Publish container image (multi-arch, SDK container publish)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: >
+          dotnet publish src/Catalog.Api/Catalog.Api.csproj -c Release /t:PublishContainer
+          "-p:ContainerRegistry=ghcr.io"
+          "-p:ContainerImageTags=latest;${{ env.VERSION }};sha-${{ github.sha }}"
+          "-p:ContainerRuntimeIdentifiers=linux-x64;linux-arm64"
+
+      - name: Pack EShop.Catalog.Hosting
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: dotnet pack src/Catalog.Hosting/Catalog.Hosting.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -o ./artifacts
+
+      - name: Push EShop.Catalog.Hosting to GitHub Packages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: >
+          dotnet nuget push ./artifacts/*.nupkg
+          --source "https://nuget.pkg.github.com/lpichet/index.json"
+          --api-key "${{ secrets.GITHUB_TOKEN }}"

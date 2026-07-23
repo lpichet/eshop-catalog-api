@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- NuGet package metadata: this is the contract the catalog team ships to orchestrators. -->
+    <PackageId>EShop.Catalog.Hosting</PackageId>
+    <Description>Aspire hosting integration for the eShop demo Catalog API. Adds the published container image (ghcr.io/lpichet/eshop-catalog-api) to an Aspire app model and lets consumers replace the seed data with WithSeedData().</Description>
+    <Authors>lpichet</Authors>
+    <PackageTags>aspire;hosting;eshop;catalog;demo</PackageTags>
+    <RepositoryUrl>https://github.com/lpichet/eshop-catalog-api</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/lpichet/eshop-catalog-api</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>1.0.0-dev</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting" Version="13.4.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>

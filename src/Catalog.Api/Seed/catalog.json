@@ -1,0 +1,14 @@
+[
+  { "name": "Adventurer GPS Watch", "description": "Rugged GPS watch with offline topo maps, barometric altimeter and a two-week battery life.", "price": 199.99, "brand": "Daybird", "type": "Gadgets", "availableStock": 120 },
+  { "name": "AquaFit Hydration Belt", "description": "Lightweight running belt with two leak-proof flasks and a zip pocket for keys and gels.", "price": 34.50, "brand": "AirStrider", "type": "Accessories", "availableStock": 200 },
+  { "name": "Alpine Fusion Goggles", "description": "Anti-fog dual-lens ski goggles with magnetic lens swap and full UV protection.", "price": 79.99, "brand": "Zephyr", "type": "Eyewear", "availableStock": 85 },
+  { "name": "Summit Pro Climbing Harness", "description": "Fully adjustable sport climbing harness with four gear loops and reinforced tie-in points.", "price": 89.00, "brand": "Gravitator", "type": "Climbing", "availableStock": 60 },
+  { "name": "TrailBlaze Hiking Boots", "description": "Waterproof mid-cut hiking boots with aggressive grip and cushioned midsole for long treks.", "price": 149.95, "brand": "WildRunner", "type": "Footwear", "availableStock": 140 },
+  { "name": "Nomad Travel Backpack 45L", "description": "Carry-on friendly 45 litre pack with laptop sleeve, rain cover and lockable zips.", "price": 119.00, "brand": "Quester", "type": "Bags", "availableStock": 95 },
+  { "name": "Glacier Insulated Bottle 1L", "description": "Double-wall vacuum bottle that keeps drinks cold for 24 hours or hot for 12.", "price": 29.90, "brand": "Ocean Blue", "type": "Accessories", "availableStock": 300 },
+  { "name": "BasecampFold Camp Stove", "description": "Foldable two-burner camp stove with piezo ignition and wind shields.", "price": 64.75, "brand": "Green Equipment", "type": "Camping", "availableStock": 70 },
+  { "name": "Aurora Down Jacket", "description": "800-fill responsibly sourced down jacket that packs into its own pocket.", "price": 189.00, "brand": "Solstix", "type": "Clothing", "availableStock": 110 },
+  { "name": "RapidRoll Sleeping Pad", "description": "Self-inflating insulated sleeping pad with R-value 4.5 for three-season comfort.", "price": 54.25, "brand": "B&R", "type": "Camping", "availableStock": 130 },
+  { "name": "Legend Carbon Trekking Poles", "description": "Featherweight carbon poles with quick-lock adjustment and cork grips, sold as a pair.", "price": 99.50, "brand": "Legend", "type": "Hiking", "availableStock": 150 },
+  { "name": "Rando Trail Mix Multi-Tool", "description": "Fourteen-function stainless multi-tool with pliers, blade and bottle opener in a belt pouch.", "price": 42.00, "brand": "Rando", "type": "Gadgets", "availableStock": 220 }
+]
