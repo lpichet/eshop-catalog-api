@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <!-- SDK container publish (no Dockerfile needed): dotnet publish /t:PublishContainer -->
     <ContainerRepository>lpichet/eshop-catalog-api</ContainerRepository>
+    <ContainerRuntimeIdentifiers>linux-x64;linux-arm64</ContainerRuntimeIdentifiers>
+    <!-- CI passes CIVersion/CISha; semicolon-separated tags must live here, not on the CLI -->
+    <ContainerImageTags Condition="'$(CIVersion)' != ''">latest;$(CIVersion);sha-$(CISha)</ContainerImageTags>
   </PropertyGroup>
 
   <ItemGroup>
